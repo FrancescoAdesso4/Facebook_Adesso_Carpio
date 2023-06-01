@@ -1,0 +1,43 @@
+
+
+
+<div>
+    <h3>{{this.post.autore}}</h3>
+    <p>{{this.post.testo}}</p>
+    
+
+    <div>
+        <p style="float: left;">{{this.post.like}}</p>
+        <button style="float: left;"  (click)="add_like()" class="commen">like</button>
+        <button style="float: left;"  (click)="dislike()" class="commen">Dislike</button>
+        <button (click)="comment_section_appear()" class="commen">commenti</button>
+    </div>
+
+
+    <br *ngIf="comment_appear">
+    <br *ngIf="comment_appear">
+    
+    <div class="card" *ngIf="comment_appear">
+
+        <div>
+            <div *ngFor="let c of post.commenti" class="card m-2">
+                <p class="px-2 py-1 my-auto">{{c.testo}}</p>
+            </div>
+            
+        </div>
+
+        <div class="form-floating m-3 mb-0">
+            <textarea class="form-control" placeholder="Scrivi un commento" #addComment id="commento" style="height: 100px"></textarea>
+            <label for="commento" style="color: rgb(110, 117, 124);">Scrivi un commento</label>
+        </div>
+        
+        <button (click)="add_comment(addComment)" type="button" class="btn btn-primary m-2">invia commento</button>
+        <p *ngIf="error_appear" class="text-center text-danger mt-2" style="font-weight: bold;">Non puoi inviare commenti vuoti</p>
+        
+        
+    </div>
+
+
+    <br *ngIf="comment_appear == false">
+    <hr>
+</div>
